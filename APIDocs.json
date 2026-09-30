@@ -1,0 +1,94 @@
+{
+  "Phone": {
+    "/POST": {
+      "/connect_call": {
+        "request": {
+          "sender" : {
+            "phoneNr": "string"
+          }
+        }
+      },
+      "/call_packet": {
+        "request": {
+          "message": "string"
+        }
+      }
+    }
+  },
+
+
+  "Radio": {
+    "/POST": {
+      "/additional_info": {
+        "request": {
+          "ip": "string",
+          "mac": "string",
+          "port": "integer",
+          "phoneNr": "string"
+        }
+      },
+      "/init_call": {
+        "request": {
+          "sender" : {
+            "phoneNr": "string"
+          },
+          "receiver": {
+            "phoneNr": "string"
+          }
+        }
+      },
+      "/connect_call": {
+        "receiver":{
+          "phoneNr": "string"
+        },
+        "sender":{
+          "phoneNr": "string",
+          "owner":{
+            "ip": "string",
+            "mac": "string",
+            "port": "integer"
+          }
+        }
+      },
+      "/call_packet": {
+        "callId": "string",
+        "message": "string",
+        "isSender": "boolean"
+      }
+
+    }
+  },
+
+
+  "Master": {
+    "/POST": {
+      "/phone_vector":{
+        "request":
+        {
+          "owner": {
+            "ip": "string",
+            "mac": "string",
+            "port": "integer"
+          },
+          "phones": [
+            {
+              "ip": "string",
+              "mac": "string",
+              "port": "integer",
+              "phoneNr": "string"
+            }
+          ]
+        }
+    }
+    },
+    "/GET": {
+      "/phone_owner?phoneNr={phoneNr}": {
+        "response": {
+          "ip": "string",
+          "mac": "string",
+          "port": "integer"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,272 @@
+[19:17:34.349] [Main]:  [INFO] App started
+[19:17:34.349] [Main]:  [INFO] Initializing device window factory
+[19:17:34.351] [DeviceFactory]:  [INFO] Creating DeviceId with success for mac 57:A9:FA:46:89:F4 ip address 192.168.1.1
+[19:17:34.351] [DeviceWindowFactory]:  [DEBUG] Built command: "D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe" 1 1 8081 192.168.1.1 57:A9:FA:46:89:F4
+
+[19:17:34.362] [DeviceWindowFactory]:  [INFO] New Device Created
+
+[19:17:34.475] [Main_DeviceWindow]:  [INFO] EXE: D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe
+[19:17:34.476] [Main_DeviceWindow]:  [INFO] PID: 21272
+[19:17:34.476] [Main_DeviceWindow]:  [INFO] Started new window
+[19:17:34.476] [Main_DeviceWindow]:  [INFO] Initializing device factory
+[19:17:34.477] [Main_DeviceWindow]:  [INFO] Received info:  Role: 1 IP: 192.168.1.1 Mac: 57:A9:FA:46:89:F4
+[19:17:34.477] [DeviceFactory]:  [INFO] Creating Master Radio with success
+[19:17:34.478] [IpAddressMaster]:  [DEBUG] IP ADDRESS MASTER CREATED WITH ROLE: 1
+[19:17:34.480] [MasterListener|57:A9:FA:46:89:F4]:  [INFO] Prepared callbacks for MASTER Listener
+[19:17:34.481] [MasterRadio|57:A9:FA:46:89:F4]:  [INFO] Starting listener on 127.0.0.1:8081
+[19:17:34.482] [MasterRadio|57:A9:FA:46:89:F4]:  [INFO] Listener successfully bound on 127.0.0.1:8081
+[19:17:34.483] [IpAddressMaster]:  [INFO] IP address requested as role: MASTER
+[19:17:34.483] [MasterRadio|57:A9:FA:46:89:F4]:  [DEBUG] address aquired for RADIO: 192.169.1.1
+[19:17:34.487] [DeviceFactory]:  [INFO] Creating DeviceId with success for mac 3C:8A:57:45:90:76 ip address 192.169.1.1
+[19:17:34.488] [DeviceWindowFactory]:  [DEBUG] Built command: "D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe" 2 2 8082 192.169.1.1 3C:8A:57:45:90:76
+
+[19:17:34.495] [DeviceWindowFactory]:  [INFO] New Device Created
+
+[19:17:34.495] [IpAddressMaster]:  [INFO] IP address requested as role: MASTER
+[19:17:34.496] [MasterRadio|57:A9:FA:46:89:F4]:  [DEBUG] address aquired for RADIO: 192.170.1.1
+[19:17:34.496] [DeviceFactory]:  [INFO] Creating DeviceId with success for mac 19:DC:F4:99:C1:8F ip address 192.170.1.1
+[19:17:34.497] [DeviceWindowFactory]:  [DEBUG] Built command: "D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe" 3 2 8083 192.170.1.1 19:DC:F4:99:C1:8F
+
+[19:17:34.502] [DeviceWindowFactory]:  [INFO] New Device Created
+
+[19:17:34.578] [Main_DeviceWindow]:  [INFO] EXE: D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe
+[19:17:34.580] [Main_DeviceWindow]:  [INFO] PID: 14068
+[19:17:34.580] [Main_DeviceWindow]:  [INFO] Started new window
+[19:17:34.580] [Main_DeviceWindow]:  [INFO] Initializing device factory
+[19:17:34.581] [Main_DeviceWindow]:  [INFO] Received info:  Role: 2 IP: 192.169.1.1 Mac: 3C:8A:57:45:90:76
+[19:17:34.581] [DeviceFactory]:  [INFO] Creating Radio with success
+[19:17:34.581] [IpAddressMaster]:  [DEBUG] IP ADDRESS MASTER CREATED WITH ROLE: 2
+[19:17:34.582] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Prepared callbacks for RADIO Listener
+[19:17:34.585] [Radio|3C:8A:57:45:90:76]:  [INFO] Starting listener on 127.0.0.1:8082
+[19:17:34.587] [Radio|3C:8A:57:45:90:76]:  [INFO] Listener successfully bound on 127.0.0.1:8082
+[19:17:34.587] [IpAddressMaster]:  [INFO] IP address requested as role: RADIO
+[19:17:34.587] [Radio|3C:8A:57:45:90:76]:  [INFO] ip address aquired for PHONE: 192.169.2.1
+[19:17:34.589] [DeviceFactory]:  [INFO] Creating DeviceId with success for mac 1E:02:A2:20:48:E1 ip address 192.169.2.1
+[19:17:34.590] [DeviceWindowFactory]:  [DEBUG] Built command: "D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe" 4 3 8084 192.169.2.1 1E:02:A2:20:48:E1 8082
+
+[19:17:34.590] [Main_DeviceWindow]:  [INFO] EXE: D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe
+[19:17:34.592] [Main_DeviceWindow]:  [INFO] PID: 7628
+[19:17:34.593] [Main_DeviceWindow]:  [INFO] Started new window
+[19:17:34.593] [Main_DeviceWindow]:  [INFO] Initializing device factory
+[19:17:34.593] [Main_DeviceWindow]:  [INFO] Received info:  Role: 2 IP: 192.170.1.1 Mac: 19:DC:F4:99:C1:8F
+[19:17:34.594] [DeviceFactory]:  [INFO] Creating Radio with success
+[19:17:34.594] [IpAddressMaster]:  [DEBUG] IP ADDRESS MASTER CREATED WITH ROLE: 2
+[19:17:34.595] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Prepared callbacks for RADIO Listener
+[19:17:34.598] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Starting listener on 127.0.0.1:8083
+[19:17:34.599] [DeviceWindowFactory]:  [INFO] New Device Created
+
+[19:17:34.600] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Listener successfully bound on 127.0.0.1:8083
+[19:17:34.600] [IpAddressMaster]:  [INFO] IP address requested as role: RADIO
+[19:17:34.600] [IpAddressMaster]:  [INFO] IP address requested as role: RADIO
+[19:17:34.600] [Radio|3C:8A:57:45:90:76]:  [INFO] ip address aquired for PHONE: 192.169.3.1
+[19:17:34.601] [Radio|19:DC:F4:99:C1:8F]:  [INFO] ip address aquired for PHONE: 192.170.2.1
+[19:17:34.601] [DeviceFactory]:  [INFO] Creating DeviceId with success for mac 50:16:D8:7C:CF:85 ip address 192.169.3.1
+[19:17:34.602] [DeviceWindowFactory]:  [DEBUG] Built command: "D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe" 5 3 8085 192.169.3.1 50:16:D8:7C:CF:85 8082
+
+[19:17:34.602] [DeviceFactory]:  [INFO] Creating DeviceId with success for mac D9:F3:96:85:5F:7A ip address 192.170.2.1
+[19:17:34.603] [DeviceWindowFactory]:  [DEBUG] Built command: "D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe" 6 3 8086 192.170.2.1 D9:F3:96:85:5F:7A 8083
+
+[19:17:34.610] [DeviceWindowFactory]:  [INFO] New Device Created
+
+[19:17:34.611] [DeviceWindowFactory]:  [INFO] New Device Created
+
+[19:17:34.611] [IpAddressMaster]:  [INFO] IP address requested as role: RADIO
+[19:17:34.611] [Radio|19:DC:F4:99:C1:8F]:  [INFO] ip address aquired for PHONE: 192.170.3.1
+[19:17:34.612] [DeviceFactory]:  [INFO] Creating DeviceId with success for mac A0:15:4E:AC:21:42 ip address 192.170.3.1
+[19:17:34.613] [DeviceWindowFactory]:  [DEBUG] Built command: "D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe" 7 3 8087 192.170.3.1 A0:15:4E:AC:21:42 8083
+
+[19:17:34.619] [DeviceWindowFactory]:  [INFO] New Device Created
+
+[19:17:34.721] [Main_DeviceWindow]:  [INFO] EXE: D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe
+[19:17:34.723] [Main_DeviceWindow]:  [INFO] PID: 9736
+[19:17:34.723] [Main_DeviceWindow]:  [INFO] Started new window
+[19:17:34.724] [Main_DeviceWindow]:  [INFO] Initializing device factory
+[19:17:34.724] [Main_DeviceWindow]:  [INFO] Received info:  Role: 3 IP: 192.169.2.1 Mac: 1E:02:A2:20:48:E1
+[19:17:34.726] [Main_DeviceWindow]:  [INFO] Created phone number: 0789928746 for phone with MAC: 1E:02:A2:20:48:E1
+[19:17:34.726] [DeviceFactory]:  [INFO] Creating Phone with success
+[19:17:34.727] [Phone|1E:02:A2:20:48:E1]:  [INFO] Starting listener on 127.0.0.1:8084
+[19:17:34.730] [Phone|1E:02:A2:20:48:E1]:  [INFO] Listener successfully bound on 127.0.0.1:8084
+[19:17:34.730] [PhoneEmitter]:  [INFO] Sending RADIO/POST/additional_info with body {"ip":"192.169.2.1","mac":"1E:02:A2:20:48:E1","phoneNr":"0789928746","port":8084} to owner port 8082
+[19:17:34.732] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Handling RADIO/POST/additional_info
+[19:17:34.732] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Received Info :
+MAC: 1E:02:A2:20:48:E1
+IP: 192.169.2.1
+phoneNr: 0789928746
+port: 8084
+[19:17:34.732] [Radio|3C:8A:57:45:90:76]:  [INFO] Completing additional info for ip 192.169.2.1 and mac 1E:02:A2:20:48:E1
+[19:17:34.733] [Radio|3C:8A:57:45:90:76]:  [INFO] Got port 8084 and phoneNr 0789928746 for ip 192.169.2.1
+[19:17:34.733] [Radio|3C:8A:57:45:90:76]:  [INFO] Updating list for Master
+[19:17:34.733] [RadioEmitter]:  [INFO] Sending MASTER/POST/phone_vector with body {"owner":{"ip":"192.169.1.1","mac":"3C:8A:57:45:90:76","port":8082},"phones":[{"ip":"192.169.2.1","mac":"1E:02:A2:20:48:E1","phoneNr":"0789928746","port":8084},{"ip":"192.169.3.1","mac":"50:16:D8:7C:CF:85","phoneNr":"","port":0}]} to owner port 8081
+[19:17:34.732] [Main_DeviceWindow]:  [INFO] EXE: D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe
+[19:17:34.734] [Main_DeviceWindow]:  [INFO] PID: 18704
+[19:17:34.734] [Main_DeviceWindow]:  [INFO] Started new window
+[19:17:34.735] [Main_DeviceWindow]:  [INFO] Initializing device factory
+[19:17:34.735] [MasterListener|57:A9:FA:46:89:F4]:  [INFO] Received phones info for owner :
+MAC: 3C:8A:57:45:90:76
+IP: 192.169.1.1
+port: 8082
+[19:17:34.737] [IpAddressMaster]:  [DEBUG] Updated externalRadioToPhonesMap_ for 192.169.1.1
+C: 50:16:D8:7C:CF:85
+[19:17:34.738] [DeviceFactory]:  [INFO] Creating Phone with success
+[19:17:34.740] [RadioEmitter]:  [INFO] Received response for MASTER/POST/phone_vector status: 200 body: OK
+[19:17:34.742] [PhoneEmitter]:  [INFO] Received response for RADIO/POST/additional_info status: 200 body: OK
+[19:17:34.746] [Phone|50:16:D8:7C:CF:85]:  [INFO] Starting listener on 127.0.0.1:8085
+[19:17:34.748] [PhoneEmitter]:  [INFO] Sending RADIO/POST/additional_info with body {"ip":"192.169.3.1","mac":"50:16:D8:7C:CF:85","phoneNr":"0764090864","port":8085} to owner port 8082
+[19:17:34.752] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Handling RADIO/POST/additional_info
+[19:17:34.753] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Received Info :
+MAC: 50:16:D8:7C:CF:85
+IP: 192.169.3.1
+phoneNr: 0764090864
+port: 8085
+[19:17:34.754] [Radio|3C:8A:57:45:90:76]:  [INFO] Completing additional info for ip 192.169.3.1 and mac 50:16:D8:7C:CF:85
+[19:17:34.754] [Radio|3C:8A:57:45:90:76]:  [INFO] Got port 8085 and phoneNr 0764090864 for ip 192.169.3.1
+[19:17:34.755] [Radio|3C:8A:57:45:90:76]:  [INFO] Updating list for Master
+[19:17:34.755] [RadioEmitter]:  [INFO] Sending MASTER/POST/phone_vector with body {"owner":{"ip":"192.169.1.1","mac":"3C:8A:57:45:90:76","port":8082},"phones":[{"ip":"192.169.2.1","mac":"1E:02:A2:20:48:E1","phoneNr":"0789928746","port":8084},{"ip":"192.169.3.1","mac":"50:16:D8:7C:CF:85","phoneNr":"0764090864","port":8085}]} to owner port 8081
+[19:17:34.757] [MasterListener|57:A9:FA:46:89:F4]:  [INFO] Received phones info for owner :
+MAC: 3C:8A:57:45:90:76
+IP: 192.169.1.1
+port: 8082
+[19:17:34.757] [IpAddressMaster]:  [DEBUG] Updated externalRadioToPhonesMap_ for 192.169.1.1
+[19:17:34.758] [RadioEmitter]:  [INFO] Received response for MASTER/POST/phone_vector status: 200 body: OK
+[19:17:34.758] [Main_DeviceWindow]:  [INFO] EXE: D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe
+[19:17:34.759] [Main_DeviceWindow]:  [INFO] PID: 20696
+[19:17:34.759] [Main_DeviceWindow]:  [INFO] Started new window
+[19:17:34.759] [Main_DeviceWindow]:  [INFO] Initializing device factory
+[19:17:34.760] [PhoneEmitter]:  [INFO] Received response for RADIO/POST/additional_info status: 200 body: OK
+[19:17:34.760] [Main_DeviceWindow]:  [INFO] Received info:  Role: 3 IP: 192.170.3.1 Mac: A0:15:4E:AC:21:42
+[19:17:34.761] [Main_DeviceWindow]:  [INFO] Created phone number: 0791023657 for phone with MAC: A0:15:4E:AC:21:42
+[19:17:34.761] [DeviceFactory]:  [INFO] Creating Phone with success
+[19:17:34.762] [Phone|A0:15:4E:AC:21:42]:  [INFO] Starting listener on 127.0.0.1:8087
+[19:17:34.765] [PhoneEmitter]:  [INFO] Sending RADIO/POST/additional_info with body {"ip":"192.170.3.1","mac":"A0:15:4E:AC:21:42","phoneNr":"0791023657","port":8087} to owner port 8083
+[19:17:34.767] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Handling RADIO/POST/additional_info
+[19:17:34.768] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Received Info :
+MAC: A0:15:4E:AC:21:42
+IP: 192.170.3.1
+phoneNr: 0791023657
+port: 8087
+[19:17:34.768] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Completing additional info for ip 192.170.3.1 and mac A0:15:4E:AC:21:42
+[19:17:34.769] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Got port 8087 and phoneNr 0791023657 for ip 192.170.3.1
+[19:17:34.769] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Updating list for Master
+[19:17:34.770] [RadioEmitter]:  [INFO] Sending MASTER/POST/phone_vector with body {"owner":{"ip":"192.170.1.1","mac":"19:DC:F4:99:C1:8F","port":8083},"phones":[{"ip":"192.170.2.1","mac":"D9:F3:96:85:5F:7A","phoneNr":"","port":0},{"ip":"192.170.3.1","mac":"A0:15:4E:AC:21:42","phoneNr":"0791023657","port":8087}]} to owner port 8081
+[19:17:34.773] [Main_DeviceWindow]:  [INFO] EXE: D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe
+[19:17:34.774] [Main_DeviceWindow]:  [INFO] PID: 9308
+[19:17:34.775] [MasterListener|57:A9:FA:46:89:F4]:  [INFO] Received phones info for owner :
+MAC: 19:DC:F4:99:C1:8F
+IP: 192.170.1.1
+port: 8083
+[19:17:34.776] [Main_DeviceWindow]:  [INFO] Initializing device factory
+ap_ for 192.170.1.1
+[19:17:34.777] [Main_DeviceWindow]:  [INFO] Received info:  Role: 3 IP: 192.170.2.1 Mac: D9:F3:96:85:5F:7A
+[19:17:34.779] [RadioEmitter]:  [INFO] Received response for MASTER/POST/phone_vector status: 200 body: OK
+[19:17:34.779] [Main_DeviceWindow]:  [INFO] Created phone number: 0795721244 for phone with MAC: D9:F3:96:85:5F:7A
+[19:17:34.779] [DeviceFactory]:  [INFO] Creating Phone with success
+[19:17:34.780] [Phone|D9:F3:96:85:5F:7A]:  [INFO] Starting listener on 127.0.0.1:8086
+[19:17:34.780] [PhoneEmitter]:  [INFO] Received response for RADIO/POST/additional_info status: 200 body: OK
+[19:17:34.781] [Phone|D9:F3:96:85:5F:7A]:  [INFO] Listener successfully bound on 127.0.0.1:8086
+[19:17:34.781] [PhoneEmitter]:  [INFO] Sending RADIO/POST/additional_info with body {"ip":"192.170.2.1","mac":"D9:F3:96:85:5F:7A","phoneNr":"0795721244","port":8086} to owner port 8083
+[19:17:34.783] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Handling RADIO/POST/additional_info
+[19:17:34.783] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Received Info :
+MAC: D9:F3:96:85:5F:7A
+IP: 192.170.2.1
+phoneNr: 0795721244
+port: 8086
+[19:17:34.784] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Completing additional info for ip 192.170.2.1 and mac D9:F3:96:85:5F:7A
+[19:17:34.784] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Got port 8086 and phoneNr 0795721244 for ip 192.170.2.1
+[19:17:34.784] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Updating list for Master
+[19:17:34.785] [RadioEmitter]:  [INFO] Sending MASTER/POST/phone_vector with body {"owner":{"ip":"192.170.1.1","mac":"19:DC:F4:99:C1:8F","port":8083},"phones":[{"ip":"192.170.2.1","mac":"D9:F3:96:85:5F:7A","phoneNr":"0795721244","port":8086},{"ip":"192.170.3.1","mac":"A0:15:4E:AC:21:42","phoneNr":"0791023657","port":8087}]} to owner port 8081
+[19:17:34.786] [MasterListener|57:A9:FA:46:89:F4]:  [INFO] Received phones info for owner :
+MAC: 19:DC:F4:99:C1:8F
+IP: 192.170.1.1
+port: 8083
+[19:17:34.787] [IpAddressMaster]:  [DEBUG] Updated externalRadioToPhonesMap_ for 192.170.1.1
+[19:17:34.788] [RadioEmitter]:  [INFO] Received response for MASTER/POST/phone_vector status: 200 body: OK
+[19:17:34.792] [PhoneEmitter]:  [INFO] Received response for RADIO/POST/additional_info status: 200 body: OK
+[19:20:21.474] [Phone|50:16:D8:7C:CF:85]:  [DEBUG] INPUT RECEIVED: 0795721244 waitingForCallResponse = 0
+[19:20:21.475] [Phone|50:16:D8:7C:CF:85]:  [DEBUG] INPUT IS PHONE NUMBER
+[19:20:21.475] [PhoneEmitter]:  [INFO] Sending RADIO/POST/init_call with body {"receiver":{"phoneNr":"0795721244"},"sender":{"ip":"192.169.3.1","mac":"50:16:D8:7C:CF:85","phoneNr":"0764090864","port":8085}} to radio port 8082
+[19:20:21.476] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Handling RADIO/POST/init_call
+[19:20:21.477] [RadioEmitter]:  [INFO] sending MASTER/GET/phone_owner?phoneNr=0795721244 to port 8081
+[19:20:21.478] [MasterListener|57:A9:FA:46:89:F4]:  [INFO] Handling MASTER/GET/phone_owner
+[19:20:21.478] [MasterListener|57:A9:FA:46:89:F4]: Extracted phone number 0795721244
+[19:20:21.478] [MasterRadio|57:A9:FA:46:89:F4]:  [INFO] getRadioForPhoneNrSearching for radio owner of 0795721244
+[19:20:21.479] [MasterRadio|57:A9:FA:46:89:F4]:  [DEBUG] getRadioForPhoneNrComparing with phone Nr 0789928746
+[19:20:21.479] [MasterRadio|57:A9:FA:46:89:F4]:  [DEBUG] getRadioForPhoneNrComparing with phone Nr 0764090864
+[19:20:21.479] [MasterRadio|57:A9:FA:46:89:F4]:  [DEBUG] getRadioForPhoneNrComparing with phone Nr 0795721244
+[19:20:21.480] [RadioEmitter]:  [INFO] Received response for MASTER/GET/phone_owner?phoneNr=0795721244 with status 200 and body {"ip":"192.170.1.1","mac":"19:DC:F4:99:C1:8F","port":8083}
+[19:20:21.480] [RadioEmitter]:  [INFO] Sending RADIO/POST/connect_call with body {"receiver":{"phoneNr":"0795721244"},"sender":{"owner":{"ip":"192.169.1.1","mac":"3C:8A:57:45:90:76","port":8082},"phoneNr":"0764090864"}} to owner port 8083
+[19:20:21.481] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Handling RADIO/POST/connect_call
+[19:20:21.482] [RadioEmitter]:  [INFO] Sending PHONE/POST/connect_call with body {"sender":{"phoneNr":"0764090864"}} to owner port 8086
+[19:20:21.483] [PhoneListener|D9:F3:96:85:5F:7A]:  [INFO] Handling PHONE/POST/connect_call
+[19:20:21.483] [PhoneListener|D9:F3:96:85:5F:7A]:  [INFO] Phone is not in call
+[19:20:21.484] [Phone|D9:F3:96:85:5F:7A]:  [DEBUG] Setting waitingForCallResponse = true
+[19:20:24.856] [Phone|D9:F3:96:85:5F:7A]:  [DEBUG] INPUT RECEIVED: 1 waitingForCallResponse = 1
+[19:20:24.856] [Phone|D9:F3:96:85:5F:7A]:  [DEBUG] INPUT IS CALL RESPONSE
+[19:20:24.857] [RadioEmitter]:  [INFO] Received response for PHONE/POST/connect_call status: 200 body: Call Accepted
+[19:20:24.858] [RadioListener|19:DC:F4:99:C1:8F]:  [DEBUG] callId ptr = 0x1360d0f1e90
+[19:20:24.858] [RadioListener|19:DC:F4:99:C1:8F]:  [DEBUG] callId id = 07640908640795721244
+[19:20:24.858] [RadioListener|19:DC:F4:99:C1:8F]:  [DEBUG] sender phone = 0764090864
+[19:20:24.858] [RadioListener|19:DC:F4:99:C1:8F]:  [DEBUG] receiver phone = 0795721244
+[19:20:24.859] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] REGISTER CALL - ENTERED
+[19:20:24.859] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] REGISTER CALL - BEFORE LOCK
+[19:20:24.859] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] REGISTER CALL - LOCK ACQUIRED
+[19:20:24.859] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Registering call with id 07640908640795721244
+[19:20:24.860] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] REGISTER CALL - PUSH FINISHED
+[19:20:24.860] [RadioListener|19:DC:F4:99:C1:8F]:  [DEBUG] Returning RADIO/POST/connect_call with status 200
+[19:20:24.860] [RadioEmitter]:  [INFO] Received response for RADIO/POST/connect_call status: 200 body: OK
+[19:20:24.861] [Radio|3C:8A:57:45:90:76]:  [DEBUG] REGISTER CALL - ENTERED
+[19:20:24.861] [Radio|3C:8A:57:45:90:76]:  [DEBUG] REGISTER CALL - BEFORE LOCK
+[19:20:24.861] [Radio|3C:8A:57:45:90:76]:  [DEBUG] REGISTER CALL - LOCK ACQUIRED
+[19:20:24.861] [Radio|3C:8A:57:45:90:76]:  [INFO] Registering call with id 07640908640795721244
+[19:20:24.862] [Radio|3C:8A:57:45:90:76]:  [DEBUG] REGISTER CALL - PUSH FINISHED
+[19:20:24.862] [PhoneEmitter]:  [INFO] Received response for RADIO/POST/init_call status: 200 body: OK
+[19:20:24.862] [Phone|50:16:D8:7C:CF:85]:  [DEBUG] Setting ongoingCallId_ = 07640908640795721244
+[19:20:24.863] [Phone|50:16:D8:7C:CF:85]:  [INFO] Call made with status 200
+[19:20:27.610] [Phone|D9:F3:96:85:5F:7A]:  [DEBUG] INPUT RECEIVED: Salut waitingForCallResponse = 0
+[19:20:27.610] [Phone|D9:F3:96:85:5F:7A]:  [DEBUG] INPUT IS CALL MESSAGE
+[19:20:27.610] [PhoneEmitter]:  [INFO] Sending RADIO/POST/call_packet with body {"callId":"07640908640795721244","isSender":true,"message":"Salut"} to radio port 8083
+[19:20:27.611] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Handling RADIO/POST/call_packet
+[19:20:27.612] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Received Packet with callId 07640908640795721244 message Salut
+[19:20:27.612] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Phone found in local idMap
+[19:20:27.612] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] handleReceivedPacket Searching for callId 07640908640795721244
+[19:20:27.613] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] Comparing with 07640908640795721244
+us: 200 body: OK
+[19:20:27.613] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Current Radio is RECEIVER. Packet goes to phone 0795721244
+[19:20:27.613] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Found phone 0795721244 on port 8086
+[19:20:27.613] [RadioEmitter]:  [INFO] Sending PHONE/POST/call_packet with body {"message":"Salut"} to radio port 8086
+[19:20:27.614] [PhoneListener|D9:F3:96:85:5F:7A]:  [INFO] Handling PHONE/POST/call_packet
+[19:20:27.615] [RadioEmitter]:  [INFO] Received response for PHONE/POST/call_packet status: 200 body: 
+[19:20:30.108] [Phone|D9:F3:96:85:5F:7A]:  [DEBUG] INPUT RECEIVED: Ce faci waitingForCallResponse = 0
+[19:20:30.108] [Phone|D9:F3:96:85:5F:7A]:  [DEBUG] INPUT IS CALL MESSAGE
+[19:20:30.109] [PhoneEmitter]:  [INFO] Sending RADIO/POST/call_packet with body {"callId":"07640908640795721244","isSender":true,"message":"Ce faci"} to radio port 8083
+[19:20:30.110] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Handling RADIO/POST/call_packet
+[19:20:30.110] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Received Packet with callId 07640908640795721244 message Ce faci
+[19:20:30.110] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Phone found in local idMap
+[19:20:30.111] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] handleReceivedPacket Searching for callId 07640908640795721244
+[19:20:30.111] [PhoneEmitter]:  [INFO] Received response for RADIO/POST/call_packet status: 200 body: OK
+[19:20:30.111] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] Comparing with 07640908640795721244
+[19:20:30.111] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Current Radio is RECEIVER. Packet goes to phone 0795721244
+[19:20:30.111] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Found phone 0795721244 on port 8086
+[19:20:30.112] [RadioEmitter]:  [INFO] Sending PHONE/POST/call_packet with body {"message":"Ce faci"} to radio port 8086
+[19:20:30.112] [PhoneListener|D9:F3:96:85:5F:7A]:  [INFO] Handling PHONE/POST/call_packet
+[19:20:30.113] [RadioEmitter]:  [INFO] Received response for PHONE/POST/call_packet status: 200 body: 
+[19:20:34.491] [Phone|50:16:D8:7C:CF:85]:  [DEBUG] INPUT RECEIVED: Salut waitingForCallResponse = 0
+[19:20:34.491] [Phone|50:16:D8:7C:CF:85]:  [DEBUG] INPUT IS CALL MESSAGE
+[19:20:34.492] [PhoneEmitter]:  [INFO] Sending RADIO/POST/call_packet with body {"callId":"07640908640795721244","isSender":true,"message":"Salut"} to radio port 8082
+[19:20:34.493] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Handling RADIO/POST/call_packet
+[19:20:34.494] [RadioListener|3C:8A:57:45:90:76]:  [INFO] Received Packet with callId 07640908640795721244 message Salut
+[19:20:34.494] [Radio|3C:8A:57:45:90:76]:  [INFO] Phone found in external Radio to Phone map
+[19:20:34.495] [Radio|3C:8A:57:45:90:76]:  [DEBUG] completePacket Searching for callId 07640908640795721244
+[19:20:34.495] [Radio|3C:8A:57:45:90:76]:  [DEBUG] completePacket Comparing with 07640908640795721244
+[19:20:34.495] [Radio|3C:8A:57:45:90:76]:  [DEBUG] Current radio is SENDER. Sending to receiver radio port 8083
+[19:20:34.496] [PhoneEmitter]:  [INFO] Received response for RADIO/POST/call_packet status: 200 body: OK
+[19:20:34.496] [RadioEmitter]:  [INFO] Sending RADIO/POST/call_packet with body {"callId":"07640908640795721244","isSender":false,"message":"Salut"} to radio port 8083
+[19:20:34.497] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Handling RADIO/POST/call_packet
+[19:20:34.498] [RadioListener|19:DC:F4:99:C1:8F]:  [INFO] Received Packet with callId 07640908640795721244 message Salut
+[19:20:34.498] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] handleReceivedPacket Searching for callId 07640908640795721244
+[19:20:34.499] [Radio|19:DC:F4:99:C1:8F]:  [DEBUG] Comparing with 07640908640795721244
+[19:20:34.499] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Current Radio is RECEIVER. Packet goes to phone 0795721244
+[19:20:34.499] [Radio|19:DC:F4:99:C1:8F]:  [INFO] Found phone 0795721244 on port 8086
+tus: 200 body: OK
+[19:20:34.499] [RadioEmitter]:  [INFO] Sending PHONE/POST/call_packet with body {"message":"Salut"} to radio port 8086
+[19:20:34.500] [PhoneListener|D9:F3:96:85:5F:7A]:  [INFO] Handling PHONE/POST/call_packet
+[19:20:34.501] [RadioEmitter]:  [INFO] Received response for PHONE/POST/call_packet status: 200 body: 
