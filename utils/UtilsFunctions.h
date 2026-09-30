@@ -6,16 +6,14 @@
 #define TELESIM_UTILSFUNCTIONS_H
 #include <string>
 #include <vector>
-
-#endif //TELESIM_UTILSFUNCTIONS_H
-
-
+#include <windows.h>
 namespace utils {
-
-
     std::string createMac();
     std::string createPhoneNumber();
     std::vector<std::string> parseIpAddress(const std::string& ipAddress);
-
-
+    HWND FindWindowByPID(DWORD pid);
+    void FocusCMD(DWORD pid);
 }
+#endif //TELESIM_UTILSFUNCTIONS_H
+
+

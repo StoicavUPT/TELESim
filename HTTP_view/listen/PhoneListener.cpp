@@ -21,7 +21,9 @@ void PhoneListener::waitUntilStarted() {
       });
 }
 
-void PhoneListener::onPostPhoneConnectCall(const httplib::Request &req, httplib::Response &res) {
+void PhoneListener::onPostPhoneConnectCall(
+      const httplib::Request &req,
+      httplib::Response &res) {
       logger_<< logs::info << "Handling "<< PHONE_POST_CONNECT_CALL ;
 
       nlohmann::json body = nlohmann::json::parse(req.body);
@@ -30,8 +32,8 @@ void PhoneListener::onPostPhoneConnectCall(const httplib::Request &req, httplib:
             logger_<< logs::info << "Phone is not in call";
             const auto accepted = owner_->incomingCall(phoneNr);
             if (accepted) {
-                  res.status=200;
-                  res.set_content("Call Accepted", "text/plain");
+                  res.status = 200;
+                  res.set_content("Call accepted", "text/plain");
             }
             else {
                   res.status = 401;

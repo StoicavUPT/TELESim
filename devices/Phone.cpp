@@ -75,6 +75,8 @@ void Phone::startPhone() {
 
 void Phone::acceptCall(const std::string& phoneNr) {
 
+    std::cout<<"Call initiated, start texting!" << std::endl;
+
     ongoingCallPhoneNumber_ = phoneNr;
 
     {
@@ -93,7 +95,8 @@ void Phone::sendCallMessage(const std::string& message) {
     emitter_->postRadioCallPacket(
         ongoingCallId_,
         message,
-        ownerPort_
+        ownerPort_,
+        ongoingCallPhoneNumber_
     );
 
     if (message == "0") {
@@ -103,6 +106,7 @@ void Phone::sendCallMessage(const std::string& message) {
 
 void Phone::acceptIncomingCall() {
 
+    std::cout<<"Call initiated, start texting!" << std::endl;
     {
         std::lock_guard lock(incomingCallMutex_);
 
@@ -183,12 +187,16 @@ void Phone::handleCallPacket(const std::string &message) {
 void Phone::initCall(const std::string& phoneNr) {
     if (phoneNr == deviceId_->phoneNr_) {
         std::cout<<"Can t call yourself dummy"<<std::endl;
+        return;
     }
     const auto status = emitter_->postRadioInitCall(ownerPort_,phoneNr,deviceId_);
     if (status == 200) {
         ongoingCallId_ = deviceId_->phoneNr_+phoneNr;
         logger_<< logs::debug << "Setting ongoingCallId_ = " << ongoingCallId_;
         acceptCall(phoneNr);
+    }
+    else{
+        std::cout<<"Call Failed!"<<std::endl;
     }
     logger_ << logs::info << "Call made with status " << status;
 }

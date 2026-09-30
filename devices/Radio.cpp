@@ -174,27 +174,29 @@ void Radio::completePacket(PacketPtr& packet) {
 }
 
 
-bool Radio::isLocalCall(const std::string &callId) {
-    std::vector<CallIdPtr> ongoingCalls;
+bool Radio::isReceiverRadio(const std::string &phoneNr) {
+    std::vector<DeviceIdPtr> idMap;
     {
-        std::lock_guard lock(ongoingCallsMutex_);
-        ongoingCalls = ongoingCalls_;
+        std::lock_guard lock(idMapMutex_);
+        idMap = ipAddressMaster_->idMap_;
     }
-    CallIdPtr foundCall;
-    for (const auto& call : ongoingCalls) {
-        if (call->id == callId) {
-            foundCall = call;
+    for (const auto& id : idMap) {
+        if (id->phoneNr_ == phoneNr) {
+            return true;
         }
     }
+    return false;
 
-    return *deviceId_ == *getPhoneRadio(foundCall->receiverPhoneNr).value_or(std::make_shared<DeviceId>());
 }
 
-void Radio::handlePacket(const std::string &callId, const std::string &message,bool isSender) {
+void Radio::handlePacket(const std::string& callId,
+        const std::string& message,
+        const std::string& receiverPhoneNr) {
     auto packet = std::make_shared<Packet>();
     packet->message_ = message;
     packet->callId_ = callId;
-    if (isSender && !isLocalCall(callId)) {
+    packet->receiverPhoneNr_ = receiverPhoneNr;
+    if (!isReceiverRadio(receiverPhoneNr)) {
         completePacket(packet);
         {
             std::lock_guard lock(toSendPacketsMutex_);
@@ -255,6 +257,7 @@ void Radio::handleReceivedPackets()
         auto packet = std::move(receivedPackets_.front());
         receivedPackets_.pop();
 
+        logger_ << logs::info << "Sent packet with callId " << packet->callId_;
         lock.unlock();
 
         handleReceivedPacket(packet);
@@ -263,103 +266,16 @@ void Radio::handleReceivedPackets()
 
 void Radio::handleReceivedPacket(const PacketPtr& packet) {
 
-    std::vector<CallIdPtr> ongoingCalls;
-
-    {
-        std::lock_guard lock(ongoingCallsMutex_);
-        ongoingCalls = ongoingCalls_;
-    }
-
-    std::string phoneNr;
-
-    logger_ << logs::debug
-            << __func__
-            << " Searching for callId "
-            << packet->callId_;
-
-    for (const auto& call : ongoingCalls) {
-
-        logger_ << logs::debug
-                << "Comparing with "
-                << call->id;
-
-        if (call->id == packet->callId_) {
 
 
-            if (*call->receiverRadioId == *deviceId_) {
+    const auto phoneNr = packet->receiverPhoneNr_;
 
-                phoneNr = call->receiverPhoneNr;
-
-                logger_ << logs::info
-                        << "Current Radio is RECEIVER. "
-                        << "Packet goes to phone "
-                        << phoneNr;
-            }
-
-            /*
-             * If this Radio is the sender Radio,
-             * the packet must go to the sender phone.
-             */
-            else if (*call->senderRadioId == *deviceId_) {
-
-                phoneNr = call->senderPhoneNr;
-
-                logger_ << logs::info
-                        << "Current Radio is SENDER. "
-                        << "Packet goes to phone "
-                        << phoneNr;
-            }
-
-            break;
-        }
-    }
-
-    if (phoneNr.empty()) {
-
-        logger_ << logs::error
-                << "No call found for callId "
-                << packet->callId_;
-
+    auto phone = getLocalPhone(phoneNr);
+    if (!phone) {
+        logger_ << logs::error << "As RECEIVER Radio, no phones found in internal map for phoneNr "<<phoneNr;
         return;
     }
-
-    std::vector<DeviceIdPtr> phones;
-
-    {
-        std::lock_guard lock(externalRadioToPhoneMapMutex_);
-        phones = ipAddressMaster_->idMap_;
-    }
-
-    int phonePort = 0;
-
-    for (const auto& phone : phones) {
-
-        if (phone->phoneNr_ == phoneNr) {
-
-            phonePort = phone->port_;
-
-            logger_ << logs::info
-                    << "Found phone "
-                    << phoneNr
-                    << " on port "
-                    << phonePort;
-
-            break;
-        }
-    }
-
-    if (phonePort == 0) {
-
-        logger_ << logs::error
-                << "Could not find port for phone "
-                << phoneNr;
-
-        return;
-    }
-
-    if (packet->message_ == "0") {
-        endCall(packet->callId_);
-    }
+    auto phonePort = phone->get()->port_;
 
     emitter_->postPhoneCallPacket(
         packet->message_,
@@ -371,7 +287,10 @@ void Radio::sendPacket(const PacketPtr &packet) {
     if (packet->message_ == "0") {
         endCall(packet->callId_);
     }
-    emitter_->postRadioCallPacket(packet->callId_,packet->message_,packet->receiverRadioPort_);
+    emitter_->postRadioCallPacket(packet->callId_,
+        packet->message_,
+        packet->receiverRadioPort_,
+        packet->receiverPhoneNr_);
 }
 
 void Radio::endCall(const std::string& callId) {
@@ -414,25 +333,57 @@ void Radio::updateMaster() {
     emitter_->postMasterPhoneVector(ipAddressMaster_->ownerId_,phones);
 }
 
-std::optional<DeviceIdPtr> Radio::getPhoneRadio(const std::string &phoneNr) {
+std::optional<DeviceIdPtr> Radio::getLocalPhone(const std::string &phoneNr) {
+    std::vector<DeviceIdPtr> phones;
     {
         std::lock_guard lock(idMapMutex_);
+        phones = ipAddressMaster_->idMap_;
+    }
+    auto it = std::ranges::find_if(phones,
+                                 [&phoneNr](const DeviceIdPtr& phone) {
+                                     return phone->phoneNr_ == phoneNr;});
+    if (it == phones.end()) return std::nullopt;
+    return *it;
+}
 
-        for (const auto& id : ipAddressMaster_->idMap_) {
-            if (phoneNr == id->phoneNr_) {
-                logger_<< logs::info << "Phone found in local idMap";
-                return deviceId_;
-            }
+std::optional<DeviceIdPtr> Radio::getExternalPhone(const std::string &phoneNr) {
+    std::map<DeviceIdPtr,std::vector<DeviceIdPtr>> radiosToPhonesMap;
+
+    for (const auto [radio,phones]: radiosToPhonesMap) {
+        auto it = std::ranges::find_if(phones,
+                                 [&phoneNr](const DeviceIdPtr& phone) {
+                                     return phone->phoneNr_ == phoneNr;});
+        if (it != phones.end()) return *it;
+    }
+    return std::nullopt;
+}
+
+
+std::optional<DeviceIdPtr> Radio::getPhoneRadio(const std::string &phoneNr) {
+    std::vector<DeviceIdPtr> idMap;
+
+    {
+        std::lock_guard lock(idMapMutex_);
+        idMap = ipAddressMaster_->idMap_;
+    }
+    for (const auto& id : idMap) {
+        if (phoneNr == id->phoneNr_) {
+            logger_<< logs::info << "Phone found in local idMap";
+            return deviceId_;
         }
     }
+    std::map<DeviceIdPtr,std::vector<DeviceIdPtr>> radiosToPhonesMap;
+
     {
         std::lock_guard lock(externalRadioToPhoneMapMutex_);
-        for (const auto& [radio,phones]: ipAddressMaster_->externalRadioToPhonesMap_) {
-            for (const auto& phone:phones) {
-                if (phone->phoneNr_ == phoneNr) {
-                    logger_<< logs::info << "Phone found in external Radio to Phone map";
-                    return radio;
-                }
+        radiosToPhonesMap = ipAddressMaster_->externalRadioToPhonesMap_;
+
+    }
+    for (const auto& [radio,phones]: radiosToPhonesMap) {
+        for (const auto& phone:phones) {
+            if (phone->phoneNr_ == phoneNr) {
+                logger_<< logs::info << "Phone found in external Radio to Phone map";
+                return radio;
             }
         }
     }

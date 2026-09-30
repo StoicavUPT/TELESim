@@ -9,6 +9,7 @@
 
 
 struct Packet {
+    std::string receiverPhoneNr_;
     std::string callId_;
     std::string message_;
     int receiverRadioPort_;

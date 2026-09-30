@@ -7,6 +7,7 @@
 #include "IEmit.h"
 #include "../../utils/Logger.h"
 #include "../../devices/info/DeviceId.h"
+#include "../../libs/httplib.h"
 
 
 class PhoneEmitter: public IEmit {
@@ -16,8 +17,14 @@ public:
     {}
 
 void postRadioNotifPhoneNumber(int, const DeviceIdPtr&);
-int postRadioInitCall(int radioPort,const std::string& phoneNr, const DeviceIdPtr& senderId);
-void postRadioCallPacket(const std::string& callId, const std::string& message, int radioPort);
+int postRadioInitCall(int radioPort,
+    const std::string& phoneNr,
+    const DeviceIdPtr& senderId);
+void postRadioCallPacket(
+    const std::string& callId,
+    const std::string& message,
+    int radioPort,
+    const std::string& receiverPhoneNr);
 
 private:
     utils::Logger logger_;

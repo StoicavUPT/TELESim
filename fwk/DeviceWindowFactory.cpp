@@ -27,8 +27,7 @@ void DeviceWindowFactory::createDeviceWindow(
     regFileWrite << id;
     regFileWrite.close();
 
-    const std::string exePath =
-        R"(D:\WORK\TELESim\cmake-build-debug\DeviceWindow.exe)";
+    const std::string exePath =PROJECT_PATH+std::string("/cmake-build-debug/DeviceWindow.exe");
 
     const auto port =
         role == Role::MASTER ? MASTER_PORT : 8080 + id;

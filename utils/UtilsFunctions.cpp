@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <random>
+#include <windows.h>
 
 namespace utils {
 
@@ -52,5 +53,32 @@ namespace utils {
         }
         parsedIp.push_back(byte);
         return parsedIp;
+    }
+
+    HWND FindWindowByPID(DWORD pid)
+    {
+        HWND hwnd = nullptr;
+
+        while ((hwnd = FindWindowExW(nullptr, hwnd, nullptr, nullptr)) != nullptr)
+        {
+            DWORD windowPid;
+            GetWindowThreadProcessId(hwnd, &windowPid);
+
+            if (windowPid == pid && IsWindowVisible(hwnd))
+                return hwnd;
+        }
+
+        return nullptr;
+    }
+
+    void FocusCMD(DWORD pid)
+    {
+        HWND hwnd = FindWindowByPID(pid);
+
+        if (hwnd)
+        {
+            ShowWindow(hwnd, SW_RESTORE);
+            SetForegroundWindow(hwnd);
+        }
     }
 }

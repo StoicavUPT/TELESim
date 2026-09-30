@@ -40,7 +40,10 @@ void PhoneEmitter::postRadioNotifPhoneNumber(int radioPort, const DeviceIdPtr& d
             << " error: "
             << httplib::to_string(response.error());
     }
-}void PhoneEmitter::postRadioCallPacket(const std::string &callId, const std::string &message, int radioPort) {
+}void PhoneEmitter::postRadioCallPacket(const std::string &callId,
+    const std::string &message,
+    int radioPort,
+    const std::string& receiverPhoneNr) {
 
     httplib::Client client(IP,radioPort);
     nlohmann::json body;
@@ -48,6 +51,7 @@ void PhoneEmitter::postRadioNotifPhoneNumber(int radioPort, const DeviceIdPtr& d
     body["callId"] = callId;
     body["message"] = message;
     body["isSender"] = true;
+    body["receiverPhoneNr"] = receiverPhoneNr;
 
     logger_ << logs::info << "Sending " << RADIO_POST_CALL_PACKET << " with body " << body.dump() << " to radio port " << radioPort;
 
@@ -79,7 +83,9 @@ void PhoneEmitter::postRadioNotifPhoneNumber(int radioPort, const DeviceIdPtr& d
 
 }
 
-int PhoneEmitter::postRadioInitCall(int radioPort,const std::string& phoneNr, const DeviceIdPtr& senderId) {
+int PhoneEmitter::postRadioInitCall(int radioPort,
+    const std::string& phoneNr,
+    const DeviceIdPtr& senderId) {
 
     httplib::Client client(IP,radioPort);
 
@@ -91,7 +97,6 @@ int PhoneEmitter::postRadioInitCall(int radioPort,const std::string& phoneNr, co
     sender["mac"] = senderId->mac_;
     sender["port"] = senderId->port_;
     sender["phoneNr"] = senderId->phoneNr_;
-
     receiver["phoneNr"] = phoneNr;
 
     body["sender"] = sender;

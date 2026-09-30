@@ -37,11 +37,15 @@ public:
         const std::string& receiverPhoneNr);
     int postPhoneConnectCall(const std::string& senderPhoneNr, int phonePort);
     void registerCall(const CallIdPtr& callId);
-    void handlePacket(const std::string& callId, const std::string& message,bool isSender);
+    void handlePacket(const std::string& callId,
+        const std::string& message,
+        const std::string& receiverPhoneNr);
     void sendPacket(const PacketPtr&);
     void handleReceivedPacket(const PacketPtr& packet);
 private:
-    bool isLocalCall(const std::string&);
+    std::optional<DeviceIdPtr> getLocalPhone(const std::string& phoneNr);
+    std::optional<DeviceIdPtr> getExternalPhone(const std::string& phoneNr);
+    bool isReceiverRadio(const std::string&);
     void completePacket(PacketPtr& packet);
     void sendPackets();
     void handleReceivedPackets();

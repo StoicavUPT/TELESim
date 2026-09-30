@@ -4,7 +4,8 @@
       "/connect_call": {
         "request": {
           "sender" : {
-            "phoneNr": "string"
+            "phoneNr": "string",
+            "pid" : "string"
           }
         }
       },
@@ -30,30 +31,40 @@
       "/init_call": {
         "request": {
           "sender" : {
-            "phoneNr": "string"
+            "phoneNr": "string",
+            "pid": "string"
           },
           "receiver": {
             "phoneNr": "string"
           }
+        },
+        "response": {
+          "pid": "string"
         }
       },
       "/connect_call": {
-        "receiver":{
-          "phoneNr": "string"
-        },
-        "sender":{
-          "phoneNr": "string",
-          "owner":{
-            "ip": "string",
-            "mac": "string",
-            "port": "integer"
+        "request": {
+          "receiver":{
+            "phoneNr": "string"
+          },
+          "sender":{
+            "phoneNr": "string",
+            "owner":{
+              "ip": "string",
+              "mac": "string",
+              "port": "integer"
+            }
           }
+        },
+        "response": {
+          "pid": "string"
         }
       },
       "/call_packet": {
         "callId": "string",
         "message": "string",
-        "isSender": "boolean"
+        "isSender": "boolean",
+        "receiverPhoneNr": "string"
       }
 
     }

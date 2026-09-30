@@ -122,7 +122,11 @@ void RadioEmitter::postPhoneCallPacket(const std::string &message, int phonePort
     }
 
 }
-void RadioEmitter::postRadioCallPacket(const std::string &callId, const std::string &message, int radioPort) {
+void RadioEmitter::postRadioCallPacket(
+    const std::string &callId,
+    const std::string &message,
+    int radioPort,
+    const std::string& receiverPhoneNr) {
 
     httplib::Client client(IP,radioPort);
     nlohmann::json body;
@@ -130,6 +134,7 @@ void RadioEmitter::postRadioCallPacket(const std::string &callId, const std::str
     body["callId"] = callId;
     body["message"] = message;
     body["isSender"] = false;
+    body["receiverPhoneNr"] = receiverPhoneNr;
 
     logger_ << logs::info << "Sending " << RADIO_POST_CALL_PACKET << " with body " << body.dump() << " to radio port " << radioPort;
 

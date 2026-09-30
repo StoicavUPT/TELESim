@@ -81,7 +81,7 @@ void RadioListener::onPostRadioInitCall(const httplib::Request &req, httplib::Re
             }
         }
     }
-    res.set_content("OK", "text/plain");
+    res.set_content(res.body, "text/plain");
 }
 
 void RadioListener::onPostRadioAdditionalInfo(const httplib::Request& req, httplib::Response& res) {
@@ -162,7 +162,7 @@ void RadioListener::onPostRadioConnectCall(const httplib::Request &req, httplib:
         std::cout<<"Call failed."<<std::endl;
         res.status = 400;
     }
-    res.set_content("OK", "text/plain");
+    res.set_content(res.body, "text/plain");
     logger_ << logs::debug
         << "Returning RADIO/POST/connect_call with status "
         << res.status;
@@ -174,7 +174,8 @@ void RadioListener::onPostRadioCallPacket(const httplib::Request &req, httplib::
     nlohmann::json body = nlohmann::json::parse(req.body);
     const auto callId = body["callId"].get<std::string>();
     const auto message = body["message"].get<std::string>();
-    const auto isSender = body["isSender"].get<boolean>();
+    const auto receiverPhoneNr = body["receiverPhoneNr"].get<std::string>();
+
     std::cout<<"Received packet with callId: "<<callId<<std::endl;
     logger_ << logs::info
             << "Received Packet with callId "
@@ -182,7 +183,7 @@ void RadioListener::onPostRadioCallPacket(const httplib::Request &req, httplib::
             << " message "
             << message;
 
-    owner_->handlePacket(callId,message,isSender);
+    owner_->handlePacket(callId,message,receiverPhoneNr);
 
     res.status = 200;
     res.set_content("OK", "text/plain");
