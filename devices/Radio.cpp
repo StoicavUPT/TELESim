@@ -349,7 +349,7 @@ std::optional<DeviceIdPtr> Radio::getLocalPhone(const std::string &phoneNr) {
 std::optional<DeviceIdPtr> Radio::getExternalPhone(const std::string &phoneNr) {
     std::map<DeviceIdPtr,std::vector<DeviceIdPtr>> radiosToPhonesMap;
 
-    for (const auto [radio,phones]: radiosToPhonesMap) {
+    for (const auto& [radio,phones]: radiosToPhonesMap) {
         auto it = std::ranges::find_if(phones,
                                  [&phoneNr](const DeviceIdPtr& phone) {
                                      return phone->phoneNr_ == phoneNr;});

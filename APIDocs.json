@@ -3,9 +3,8 @@
     "/POST": {
       "/connect_call": {
         "request": {
-          "sender" : {
-            "phoneNr": "string",
-            "pid" : "string"
+          "sender": {
+            "phoneNr": "string"
           }
         }
       },
@@ -16,8 +15,6 @@
       }
     }
   },
-
-
   "Radio": {
     "/POST": {
       "/additional_info": {
@@ -30,52 +27,46 @@
       },
       "/init_call": {
         "request": {
-          "sender" : {
-            "phoneNr": "string",
-            "pid": "string"
+          "sender": {
+            "ip": "string",
+            "mac": "string",
+            "port": "integer",
+            "phoneNr": "string"
           },
           "receiver": {
             "phoneNr": "string"
           }
-        },
-        "response": {
-          "pid": "string"
         }
       },
       "/connect_call": {
         "request": {
-          "receiver":{
+          "receiver": {
             "phoneNr": "string"
           },
-          "sender":{
+          "sender": {
             "phoneNr": "string",
-            "owner":{
+            "owner": {
               "ip": "string",
               "mac": "string",
               "port": "integer"
             }
           }
-        },
-        "response": {
-          "pid": "string"
         }
       },
       "/call_packet": {
-        "callId": "string",
-        "message": "string",
-        "isSender": "boolean",
-        "receiverPhoneNr": "string"
+        "request": {
+          "callId": "string",
+          "message": "string",
+          "isSender": "boolean",
+          "receiverPhoneNr": "string"
+        }
       }
-
     }
   },
-
-
   "Master": {
     "/POST": {
-      "/phone_vector":{
-        "request":
-        {
+      "/phone_vector": {
+        "request": {
           "owner": {
             "ip": "string",
             "mac": "string",
@@ -90,7 +81,7 @@
             }
           ]
         }
-    }
+      }
     },
     "/GET": {
       "/phone_owner?phoneNr={phoneNr}": {
