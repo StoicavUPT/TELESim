@@ -50,7 +50,6 @@ void PhoneEmitter::postRadioNotifPhoneNumber(int radioPort, const DeviceIdPtr& d
 
     body["callId"] = callId;
     body["message"] = message;
-    body["isSender"] = true;
     body["receiverPhoneNr"] = receiverPhoneNr;
 
     logger_ << logs::info << "Sending " << RADIO_POST_CALL_PACKET << " with body " << body.dump() << " to radio port " << radioPort;

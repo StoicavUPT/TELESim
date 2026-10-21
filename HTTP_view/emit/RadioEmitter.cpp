@@ -133,7 +133,6 @@ void RadioEmitter::postRadioCallPacket(
 
     body["callId"] = callId;
     body["message"] = message;
-    body["isSender"] = false;
     body["receiverPhoneNr"] = receiverPhoneNr;
 
     logger_ << logs::info << "Sending " << RADIO_POST_CALL_PACKET << " with body " << body.dump() << " to radio port " << radioPort;

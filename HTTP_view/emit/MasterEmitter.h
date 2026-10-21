@@ -8,7 +8,9 @@
 
 
 class MasterEmitter: public IEmit {
-
+public:
+    MasterEmitter(){}
+private:
 };
 
 

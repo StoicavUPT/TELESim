@@ -44,12 +44,10 @@ public:
     void handleReceivedPacket(const PacketPtr& packet);
 private:
     std::optional<DeviceIdPtr> getLocalPhone(const std::string& phoneNr);
-    std::optional<DeviceIdPtr> getExternalPhone(const std::string& phoneNr);
     bool isReceiverRadio(const std::string&);
     void completePacket(PacketPtr& packet);
     void sendPackets();
     void handleReceivedPackets();
-    bool isSenderPacket(const PacketPtr&);
     void updateMaster();
     void endCall(const std::string&);
     RadioListenerPtr listener_;

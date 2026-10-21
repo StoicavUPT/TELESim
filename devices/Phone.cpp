@@ -51,7 +51,7 @@ void Phone::startPhone() {
             if (input == "1") {
                 acceptIncomingCall();
             }
-            else if (input == "0") {
+            else{
                 declineIncomingCall();
             }
 
@@ -106,22 +106,21 @@ void Phone::sendCallMessage(const std::string& message) {
 
 void Phone::acceptIncomingCall() {
 
-    std::cout<<"Call initiated, start texting!" << std::endl;
     {
         std::lock_guard lock(incomingCallMutex_);
 
         incomingCallAccepted_ = true;
         waitingForCallResponse_ = false;
-
-        ongoingCallPhoneNumber_ = incomingCallPhoneNumber_;
-        ongoingCallId_ = incomingCallPhoneNumber_ + deviceId_->phoneNr_ ;
     }
+
+    ongoingCallPhoneNumber_ = incomingCallPhoneNumber_;
+    ongoingCallId_ = incomingCallPhoneNumber_ + deviceId_->phoneNr_ ;
 
     {
         std::lock_guard lock(inCallMutex);
         inCall_ = true;
     }
-
+    std::cout<<"Call initiated, start texting!" << std::endl;
     incomingCallCv_.notify_one();
 }
 
@@ -149,7 +148,6 @@ bool Phone::incomingCall(const std::string& phoneNr) {
         std::lock_guard lock(incomingCallMutex_);
 
         incomingCallPhoneNumber_ = phoneNr;
-        logger_ << logs::debug << "Setting waitingForCallResponse = true";
         waitingForCallResponse_ = true;
     }
 

@@ -37,51 +37,30 @@ void RadioListener::onPostRadioInitCall(const httplib::Request &req, httplib::Re
     else {
         const auto& phoneOwner =*maybePhoneOwner;
         if (*phoneOwner != *owner_->deviceId_) {
-
             res.status = owner_->postRadioConnectCall(
                 senderPhoneNr,
                 owner_->deviceId_,
                 phoneOwner,
                 receiverPhoneNr);
-
-            if (res.status == 200) {
-                std::cout<<"Call initiated"<<std::endl;
-                auto callId = std::make_shared<CallId>();
-
-                callId->id = senderPhoneNr + receiverPhoneNr;
-                callId->senderPhoneNr = senderPhoneNr;
-                callId->receiverPhoneNr = receiverPhoneNr;
-
-                callId->senderRadioId = owner_->deviceId_;
-                callId->receiverRadioId = phoneOwner;
-
-                owner_->registerCall(callId);
-            }else {
-                std::cout<<"Call failed"<<std::endl;
-            }
         }
         else {
             res.status = owner_->postPhoneConnectCall(
                 sender["phoneNr"].get<std::string>(),
                 *owner_->isPhoneOwner(receiverPhoneNr));
-            if (res.status == 200) {
-                std::cout<<"Call initiated"<<std::endl;
-                auto callId = std::make_shared<CallId>();
-
-                callId->id = senderPhoneNr + receiverPhoneNr;
-                callId->senderPhoneNr = senderPhoneNr;
-                callId->receiverPhoneNr = receiverPhoneNr;
-
-                callId->senderRadioId = owner_->deviceId_;
-                callId->receiverRadioId = phoneOwner;
-
-                owner_->registerCall(callId);
-            }else {
-                std::cout<<"Call failed"<<std::endl;
-            }
+        }
+        if (res.status == 200) {
+            std::cout<<"Call initiated"<<std::endl;
+            auto callId = std::make_shared<CallId>();
+            callId->id = senderPhoneNr + receiverPhoneNr;
+            callId->senderPhoneNr = senderPhoneNr;
+            callId->receiverPhoneNr = receiverPhoneNr;
+            callId->senderRadioId = owner_->deviceId_;
+            callId->receiverRadioId = phoneOwner;
+            owner_->registerCall(callId);
+        }else {
+            std::cout<<"Call failed"<<std::endl;
         }
     }
-    res.set_content(res.body, "text/plain");
 }
 
 void RadioListener::onPostRadioAdditionalInfo(const httplib::Request& req, httplib::Response& res) {
@@ -147,20 +126,12 @@ void RadioListener::onPostRadioConnectCall(const httplib::Request &req, httplib:
             callId->id = id;
             callId->receiverRadioId = owner_->deviceId_;
             callId->senderRadioId = ownerDeviceId;
-            logger_ << logs::debug << "callId ptr = " << callId.get();
-            logger_ << logs::debug << "callId id = " << callId->id;
-            logger_ << logs::debug << "sender phone = " << callId->senderPhoneNr;
-            logger_ << logs::debug << "receiver phone = " << callId->receiverPhoneNr;
             owner_->registerCall(callId);
-
-
-            res.status = 200;
         }
     }
     else {
 
         std::cout<<"Call failed."<<std::endl;
-        res.status = 400;
     }
     res.set_content(res.body, "text/plain");
     logger_ << logs::debug
