@@ -28,7 +28,7 @@ void PhoneListener::onPostPhoneConnectCall(
 
       nlohmann::json body = nlohmann::json::parse(req.body);
       const auto phoneNr = body["sender"]["phoneNr"].get<std::string>();
-      if (!owner_->isInCall()) {
+      if (!owner_->isInCall() && !owner_->waitingForCallResponse()) {
             logger_<< logs::info << "Phone is not in call";
             const auto accepted = owner_->incomingCall(phoneNr);
             if (accepted) {

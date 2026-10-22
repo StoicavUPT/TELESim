@@ -187,6 +187,10 @@ void Phone::initCall(const std::string& phoneNr) {
         std::cout<<"Can t call yourself dummy"<<std::endl;
         return;
     }
+    {
+        std::lock_guard lock(incomingCallMutex_);
+        waitingForCallResponse_ = true;
+    }
     const auto status = emitter_->postRadioInitCall(ownerPort_,phoneNr,deviceId_);
     if (status == 200) {
         ongoingCallId_ = deviceId_->phoneNr_+phoneNr;
@@ -195,6 +199,10 @@ void Phone::initCall(const std::string& phoneNr) {
     }
     else{
         std::cout<<"Call Failed!"<<std::endl;
+    }
+    {
+        std::lock_guard lock(incomingCallMutex_);
+        waitingForCallResponse_ = false;
     }
     logger_ << logs::info << "Call made with status " << status;
 }

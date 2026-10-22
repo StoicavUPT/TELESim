@@ -33,8 +33,6 @@ Radio::~Radio() {
 
     running_ = false;
 
-    if (recursiveUpdateThread_.joinable()) recursiveUpdateThread_.join();
-
     listener_->stop();
 
     if (listenerThread_.joinable()) listenerThread_.join();

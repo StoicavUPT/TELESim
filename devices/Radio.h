@@ -57,7 +57,6 @@ private:
     IpAddressMasterPtr ipAddressMaster_;
 
     std::thread listenerThread_;
-    std::thread recursiveUpdateThread_;
     std::thread sendPacketsThread_;
     std::thread handleReceivedPacketsThread_;
 

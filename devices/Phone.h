@@ -27,13 +27,15 @@ public:
     void declineIncomingCall();
     void handleCallPacket(const std::string& message);
 private:
+
+    bool isWaitingForCallResponse(){return waitingForCallResponse_;}
+
     utils::Logger logger_;
     int ownerPort_;
     PhoneListenerPtr listener_;
     PhoneEmitterPtr emitter_;
 
     std::thread listenerThread_;
-    std::thread ongoingCallThread_;
 
     std::string ongoingCallPhoneNumber_;
 

@@ -57,7 +57,6 @@
         "request": {
           "callId": "string",
           "message": "string",
-          "isSender": "boolean",
           "receiverPhoneNr": "string"
         }
       }
