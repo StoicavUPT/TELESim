@@ -11,7 +11,7 @@
 #include "../HTTP_view/listen/RadioListener.h"
 #include "../HTTP_view/emit/RadioEmitter.h"
 
-Radio::Radio(const DeviceIdPtr &deviceId) : Device(deviceId), logger_("Radio|" + deviceId->mac_) {
+Radio::Radio(const DeviceIdPtr &deviceId) : Device(deviceId), logger_("Radio|" + std::to_string(deviceId->port_)) {
     ipAddressMaster_ = std::make_shared<IpAddressMaster>(Role::ERole::RADIO, deviceId, deviceId_->port_);
     emitter_ = std::make_shared<RadioEmitter>();
     listener_ = std::make_shared<RadioListener>(deviceId->port_, deviceId, this);
@@ -197,7 +197,7 @@ void Radio::sendPackets()
         auto packet = std::move(toSendPackets_.front());
         toSendPackets_.pop();
 
-        std::cout<<"Sent packet with callId: "<<packet->callId_<<std::endl;
+        std::cout<<"Sending packet with callId: "<<packet->callId_<<std::endl;
 
         lock.unlock();
 

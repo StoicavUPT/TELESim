@@ -9,7 +9,7 @@
 
 MasterRadio::MasterRadio(const DeviceIdPtr &deviceId) :
     Device(deviceId),
-    logger_("MasterRadio|"+deviceId->mac_) {
+    logger_("MasterRadio|"+std::to_string(deviceId->port_)) {
     ipAddressMaster_ = std::make_shared<IpAddressMaster>(Role::MASTER,deviceId,deviceId_->port_);
     listener_ = std::make_shared<MasterListener>(deviceId->port_, deviceId, this);
     listener_->prepareServer();
@@ -50,6 +50,7 @@ void MasterRadio::addtoExternalRadioToPhonesMap(const DeviceIdPtr& deviceId, con
         std::lock_guard lock(externalRadioToPhoneMapMutex_);
         ipAddressMaster_->addtoExternalRadioToPhonesMap(deviceId,deviceIdVec);
     }
+    logger_ << logs::info << "External Radio To phones map updated!";
 }
 
 std::optional<DeviceIdPtr> MasterRadio::getRadioForPhoneNr(const std::string &phoneNr) {
@@ -60,14 +61,14 @@ std::optional<DeviceIdPtr> MasterRadio::getRadioForPhoneNr(const std::string &ph
         map = ipAddressMaster_->externalRadioToPhonesMap_;
     }
 
-    logger_<< logs::info << __func__ << "Searching for radio owner of "<<phoneNr;
+    logger_<< logs::info << __func__ << " Searching for radio owner of "<<phoneNr;
     for (const auto& [radio,phones]: map) {
         for (const auto& phone:phones) {
-            logger_<< logs::debug << __func__ << "Comparing with phone Nr " << phone->phoneNr_;
+            logger_<< logs::debug << __func__ << " Comparing with phone Nr " << phone->phoneNr_;
             if (phone->phoneNr_ == phoneNr) return radio;
         }
     }
-
+    logger_ << logs::warning << __func__ << "No radio found for Phone Nr: "<< phoneNr;
     return std::nullopt;
 }
 

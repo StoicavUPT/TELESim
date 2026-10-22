@@ -43,8 +43,6 @@ namespace utils {
         Logger(const std::string& id):
         id_(id)
         {
-            //std::filesystem::remove_all(std::filesystem::path(PROJECT_PATH)/ "logs");
-            //std::filesystem::create_directories(std::filesystem::path(PROJECT_PATH)/ "logs");
             createPath();
 
         }

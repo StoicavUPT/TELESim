@@ -8,7 +8,7 @@
 
 Phone::Phone(const DeviceIdPtr &deviceId, const int &ownerPort):
     Device(deviceId),
-    logger_("Phone|"+ deviceId->mac_),
+    logger_("Phone|"+ std::to_string(deviceId->port_)),
     ownerPort_(ownerPort){
     emitter_ = std::make_shared<PhoneEmitter>();
     listener_ = std::make_shared<PhoneListener>(deviceId->port_, deviceId, this);
